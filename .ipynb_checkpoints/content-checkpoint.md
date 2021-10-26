@@ -1,7 +1,7 @@
 Content
 =======
 
-Each of the 5 workshops can be accessed under the Content heading. This unit will run as a flipped-classroom. This means that you need to work through the content associated with each workshop **before** the scheduled class. In class I'll take any questions you might have as well as giving you in-person exercises to work through. These exercises will assume that you have worked through the revelant workshop material beforehand.
+This set of workshops is intended as an introduction to the Python programming language. It follows on from my [introduction to R course](https://r-openresearch-reproducibility.netlify.app) and adopts the same philosophy of analysing data in an open and reproducible way. The final workshop in this series introduces Docker as a way to containerise your analysis. This allows you to fully capture your computational environment alongside your data and analysis scripts to ensure your work is fully reproducible. 
 
 If you spot any errors with any of the content (e.g., typos) please raise an issue by clicking on the icon in the top right ![](images/github.png) where you can also view the source this book. You can download the content of each of the workshops in either .md or .pdf format by clicking on the download icon ![](images/download.png) in the top right.  
 

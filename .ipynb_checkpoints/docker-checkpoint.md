@@ -1,4 +1,4 @@
-# Making your Analysis Reproducible
+# Docker for Reproducibility
 
 ## Slides
 
