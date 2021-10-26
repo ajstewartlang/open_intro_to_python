@@ -1,0 +1,2101 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Analysis in Python &#8212; Andrew&#39;s BIOL63162 Workshops</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Automate the Boring Stuff" href="boring.html" />
+    <link rel="prev" title="Introduction to Python" href="Python_programming.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/andrew.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Andrew's BIOL63162 Workshops</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="content.html">
+   Content
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="conda.html">
+   Installing Python with Conda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_programming.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Data Analysis in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="boring.html">
+   Automate the Boring Stuff
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docker.html">
+   Making your Analysis Reproducible
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/pandas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ajstewartlang/02_intro_to_python_programming"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ajstewartlang/02_intro_to_python_programming/issues/new?title=Issue%20on%20page%20%2Fpandas.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ajstewartlang/02_intro_to_python_programming/gh-pages?urlpath=tree/pandas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas">
+   pandas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualising-our-data-by-groups">
+   Visualising Our Data by Groups
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#one-way-anova">
+   One-Way ANOVA
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#factorial-anova">
+   Factorial ANOVA
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regression">
+   Regression
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="data-analysis-in-python">
+<h1>Data Analysis in Python<a class="headerlink" href="#data-analysis-in-python" title="Permalink to this headline">¶</a></h1>
+<p>In this workshop we will focus on using Python libraries for data wrangling, visualisation, and analysis.</p>
+<div class="section" id="pandas">
+<h2>pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%HTML</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;text-align: center&quot;</span><span class="p">&gt;</span> 
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;560&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;315&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://youtube.com/embed/PCA-SouJjQs&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="text-align: center"> 
+<iframe width="560" height="315" src="https://youtube.com/embed/PCA-SouJjQs" frameborder="0" allowfullscreen></iframe>
+
+</div>
+</div></div>
+</div>
+<p>Fire up a Jupyter Notebook. In order to read in and then wrangle our data, the first thing we need to do once we’ve opened a new script in our <code class="docutils literal notranslate"><span class="pre">data_science</span></code> environment is to import the pandas library. We will import it using the conventional alias <code class="docutils literal notranslate"><span class="pre">pd</span></code>. When we need to use a function or method from pandas later, we can do that with <code class="docutils literal notranslate"><span class="pre">pd.*function/method_name*</span></code>. You can read more about the library <a class="reference external" href="https://pandas.pydata.org/">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll start by reading in some data using the pandas function <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>. The data are available via the <code class="docutils literal notranslate"><span class="pre">http</span></code> address below. If you’ve taken my R course, then you’ll recognise this as the same data file that we looked at in the first R workshop on ANOVA.</p>
+<p>24 participants responded to a word that was either common (i.e., high lexical frequency) or rare (i.e., low lexical frequency). This is our independent variable and is coded as <code class="docutils literal notranslate"><span class="pre">high</span></code> vs. <code class="docutils literal notranslate"><span class="pre">low</span></code>. Our dependent variable is reaction time and is coded as <code class="docutils literal notranslate"><span class="pre">RT</span></code>. Subject number is coded as <code class="docutils literal notranslate"><span class="pre">Subject</span></code>. We want to know whether there is a difference between conditions (and if so, where that difference lies).</p>
+<p>We need to visualise the data, generate descriptives, and run the appropriate ANOVA to determine whether our independent variable (Condition) has an influence on our dependent variable (RT).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anova_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/ajstewartlang/02_intro_to_python_programming/main/data/ANOVA_data1.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can inspect the first few lines of the dataframe using the <code class="docutils literal notranslate"><span class="pre">.head()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anova_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Subject</th>
+      <th>Condition</th>
+      <th>RT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>low</td>
+      <td>1103</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>low</td>
+      <td>1170</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>low</td>
+      <td>1225</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>low</td>
+      <td>1084</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>low</td>
+      <td>1219</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can use other <code class="docutils literal notranslate"><span class="pre">pandas</span></code> methods such as <code class="docutils literal notranslate"><span class="pre">.describe()</span></code>, <code class="docutils literal notranslate"><span class="pre">.info()</span></code> and <code class="docutils literal notranslate"><span class="pre">.hist()</span></code> to explore our dataframe further.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anova_data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Subject</th>
+      <th>RT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>24.000000</td>
+      <td>24.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>12.500000</td>
+      <td>1021.416667</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>7.071068</td>
+      <td>178.388661</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>733.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>6.750000</td>
+      <td>862.250000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>12.500000</td>
+      <td>1050.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>18.250000</td>
+      <td>1178.250000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>24.000000</td>
+      <td>1326.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anova_data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 24 entries, 0 to 23
+Data columns (total 3 columns):
+ #   Column     Non-Null Count  Dtype 
+---  ------     --------------  ----- 
+ 0   Subject    24 non-null     int64 
+ 1   Condition  24 non-null     object
+ 2   RT         24 non-null     int64 
+dtypes: int64(2), object(1)
+memory usage: 704.0+ bytes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anova_data</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;AxesSubplot:title={&#39;center&#39;:&#39;Subject&#39;}&gt;,
+        &lt;AxesSubplot:title={&#39;center&#39;:&#39;RT&#39;}&gt;]], dtype=object)
+</pre></div>
+</div>
+<img alt="_images/pandas_13_1.png" src="_images/pandas_13_1.png" />
+</div>
+</div>
+<p>The Subject histogram above really isn’t very informative, so let’s just plot the RT data. So far though, this isn’t split by our experimental groups. We’ll come to that next.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anova_data</span><span class="p">[</span><span class="s1">&#39;RT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/pandas_15_1.png" src="_images/pandas_15_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="visualising-our-data-by-groups">
+<h2>Visualising Our Data by Groups<a class="headerlink" href="#visualising-our-data-by-groups" title="Permalink to this headline">¶</a></h2>
+<p>We need to use the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> library for the rest of our visualisations. This library contains a huge range of tools for visualising data. You can read more about it <a class="reference external" href="https://matplotlib.org/stable/">here</a>.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%HTML</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;text-align: center&quot;</span><span class="p">&gt;</span> 
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;560&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;315&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://youtube.com/embed/DaWUkL2RL40&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="text-align: center"> 
+<iframe width="560" height="315" src="https://youtube.com/embed/DaWUkL2RL40" frameborder="0" allowfullscreen></iframe>
+
+</div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the code below we used the <code class="docutils literal notranslate"><span class="pre">plot</span></code> function from <code class="docutils literal notranslate"><span class="pre">pyplot</span></code> (which we have imported under the alias <code class="docutils literal notranslate"><span class="pre">plt</span></code>. We build our plot layer by layer (similar to how we do things in <code class="docutils literal notranslate"><span class="pre">R</span></code> with <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code>). There is even a built-in <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> style we can use. We define our plot initially in terms of what’s on the x-axis, what’s on the y-axis, and then what marker we want to use - which in this case is blue circles (<code class="docutils literal notranslate"><span class="pre">bo</span></code>).</p>
+<p>After this, we then add an x-axis label, a y-axis label, and a title. We also set the margins to make the plot like nice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">anova_data</span><span class="p">[</span><span class="s1">&#39;Condition&#39;</span><span class="p">],</span> <span class="n">anova_data</span><span class="p">[</span><span class="s1">&#39;RT&#39;</span><span class="p">],</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Condition&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;RT (ms.)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Reaction Time by Condition&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/pandas_20_0.png" src="_images/pandas_20_0.png" />
+</div>
+</div>
+<p>Let’s now work out some descriptive statistics using <code class="docutils literal notranslate"><span class="pre">pandas</span></code>  functions. We’ll use the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> function to group <code class="docutils literal notranslate"><span class="pre">anova_data</span></code> by <code class="docutils literal notranslate"><span class="pre">Condition</span></code>, and we’ll map this onto a new variable I’m calling <code class="docutils literal notranslate"><span class="pre">grouped_data</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped_data</span> <span class="o">=</span> <span class="n">anova_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Condition&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then generate some descriptives about this grouped dataframe. We can use the <code class="docutils literal notranslate"><span class="pre">count</span></code> function to work out how many observations we have for each of our two conditions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped_data</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Subject</th>
+      <th>RT</th>
+    </tr>
+    <tr>
+      <th>Condition</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>high</th>
+      <td>12</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>low</th>
+      <td>12</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If we wanted just to output the count for our <code class="docutils literal notranslate"><span class="pre">RT</span></code> column we could do the following.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped_data</span><span class="p">[</span><span class="s1">&#39;RT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Condition
+high    12
+low     12
+Name: RT, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the above we can see we have 12 observations in each condition, and our variable RT is type integer. We can use other <code class="docutils literal notranslate"><span class="pre">pandas</span></code> functions such as <code class="docutils literal notranslate"><span class="pre">mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">std()</span></code> in a similar way.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped_data</span><span class="p">[</span><span class="s1">&#39;RT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Condition
+high     864.666667
+low     1178.166667
+Name: RT, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped_data</span><span class="p">[</span><span class="s1">&#39;RT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Condition
+high    74.722923
+low     85.708633
+Name: RT, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sometimes it can be useful to think of the <code class="docutils literal notranslate"><span class="pre">.</span></code> notation in Python as meaning ‘and then’. We could combine some of the commands above into one using <code class="docutils literal notranslate"><span class="pre">.</span></code> which would allow us to do away with creating the temporary variable <code class="docutils literal notranslate"><span class="pre">grouped_data</span></code>. For example, the following will take our original dataframe, then group it by <code class="docutils literal notranslate"><span class="pre">Condition</span></code>, then generate the means, displaying only the RT <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anova_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Condition&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;RT&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Condition
+high     864.666667
+low     1178.166667
+Name: RT, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is a little wasteful to calculate the mean of our Subject column as well as the RT column so a better way of doing things is to calculate the mean just for our RT column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anova_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Condition&#39;</span><span class="p">])[</span><span class="s1">&#39;RT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Condition
+high     864.666667
+low     1178.166667
+Name: RT, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can map our means onto a new variable I’m calling <code class="docutils literal notranslate"><span class="pre">my_means</span></code> and then we can plot these means as a bar graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_means</span> <span class="o">=</span> <span class="n">grouped_data</span><span class="p">[</span><span class="s1">&#39;RT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">my_means</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;RT (ms.)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Reaction Time by Condition&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/pandas_35_0.png" src="_images/pandas_35_0.png" />
+</div>
+</div>
+<p>We can tweak some of the plot parameters and add error bars for each of our two conditions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_std</span> <span class="o">=</span> <span class="n">grouped_data</span><span class="p">[</span><span class="s1">&#39;RT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">error</span> <span class="o">=</span> <span class="p">[</span><span class="n">my_std</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">my_std</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_means</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">yerr</span><span class="o">=</span><span class="n">error</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;RT (ms.)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Word Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;High</span><span class="se">\n</span><span class="s1">Frequency&#39;</span><span class="p">,</span> <span class="s1">&#39;Low</span><span class="se">\n</span><span class="s1">Frequency&#39;</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mean Reaction Time and SDs by Condition&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/pandas_39_0.png" src="_images/pandas_39_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="one-way-anova">
+<h2>One-Way ANOVA<a class="headerlink" href="#one-way-anova" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%HTML</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;text-align: center&quot;</span><span class="p">&gt;</span> 
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;560&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;315&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://youtube.com/embed/UuLaQXTacMY&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="text-align: center"> 
+<iframe width="560" height="315" src="https://youtube.com/embed/UuLaQXTacMY" frameborder="0" allowfullscreen></iframe>
+
+</div>
+</div></div>
+</div>
+<p>To run a between participants one-way ANOVA to determine whether there is a difference between our two conditions we’re going to use the <code class="docutils literal notranslate"><span class="pre">stats</span></code> module from the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> library. We import it as follows…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We are now going to subset our <code class="docutils literal notranslate"><span class="pre">anova_data</span></code> data frame. We are going to do that by using a logical condition <code class="docutils literal notranslate"><span class="pre">[anova_data['Condition']=='high']</span></code>. If we were to run the following we’d see we have the subset of the data frame where Condition is equal to ‘high’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anova_data</span><span class="p">[</span><span class="n">anova_data</span><span class="p">[</span><span class="s1">&#39;Condition&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;high&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Subject</th>
+      <th>Condition</th>
+      <th>RT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>high</td>
+      <td>828</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+      <td>high</td>
+      <td>925</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>high</td>
+      <td>915</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>high</td>
+      <td>869</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>high</td>
+      <td>804</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>18</td>
+      <td>high</td>
+      <td>835</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>19</td>
+      <td>high</td>
+      <td>1022</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20</td>
+      <td>high</td>
+      <td>919</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>21</td>
+      <td>high</td>
+      <td>842</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>22</td>
+      <td>high</td>
+      <td>805</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>23</td>
+      <td>high</td>
+      <td>879</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>24</td>
+      <td>high</td>
+      <td>733</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>But what we really want is to just select the <code class="docutils literal notranslate"><span class="pre">RT</span></code> column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anova_data</span><span class="p">[</span><span class="n">anova_data</span><span class="p">[</span><span class="s1">&#39;Condition&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;high&#39;</span><span class="p">][</span><span class="s1">&#39;RT&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12     828
+13     925
+14     915
+15     869
+16     804
+17     835
+18    1022
+19     919
+20     842
+21     805
+22     879
+23     733
+Name: RT, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>By building on the above we can create two new variables, one corresponding to the data for the <code class="docutils literal notranslate"><span class="pre">high</span></code> condition group and the other for the <code class="docutils literal notranslate"><span class="pre">low</span></code> condition group.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">high_group</span> <span class="o">=</span> <span class="n">anova_data</span><span class="p">[</span><span class="n">anova_data</span><span class="p">[</span><span class="s1">&#39;Condition&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;high&#39;</span><span class="p">][</span><span class="s1">&#39;RT&#39;</span><span class="p">]</span>
+<span class="n">low_group</span> <span class="o">=</span> <span class="n">anova_data</span><span class="p">[</span><span class="n">anova_data</span><span class="p">[</span><span class="s1">&#39;Condition&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;low&#39;</span><span class="p">][</span><span class="s1">&#39;RT&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We are now in a position to run a 1-way ANOVA. We use the<code class="docutils literal notranslate"><span class="pre">f_oneway</span></code> function in the <code class="docutils literal notranslate"><span class="pre">stats</span></code> module to do this. The two parameters that it needs are the two groups that we are wanting to compare to test the null hypothesis that the two groups have the same population mean. If we had three groups, we would pass the three groups to the function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">f_oneway</span><span class="p">(</span><span class="n">high_group</span><span class="p">,</span> <span class="n">low_group</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>F_onewayResult(statistic=91.2168592809951, pvalue=2.767399319989348e-09)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remember, the <em>p</em>-value is the probability of obtaining test results at least as extreme as the results observed, under the assumption that the null hypothesis is true. Note, the output above gives us the F-value and the <em>p</em>-value but not the degrees of freedom. As we just have two groups, we could also run an independent sample t-test using the <code class="docutils literal notranslate"><span class="pre">ttest_ind</span></code> function from <code class="docutils literal notranslate"><span class="pre">stats</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">high_group</span><span class="p">,</span> <span class="n">low_group</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ttest_indResult(statistic=-9.550751765227444, pvalue=2.7673993199893327e-09)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the p-value is the same as we found with our ANOVA. And the <em>F</em>-statistic in the ANOVA is the <em>t</em>-statistic squared.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">9.550751765227444</span> <span class="o">*</span> <span class="mf">9.550751765227444</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>91.21685928099514
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we had three groups in our study, we could run the 1-way ANOVA as we did above and then if that is significant, we could run multiple t-tests with a manually adjusted alpha level (e.g., using the Bonferroni correction). One of the limitations with using the <code class="docutils literal notranslate"><span class="pre">stats</span></code> module is that degrees of freedom are not reported, nor is information about the residuals. In order to generate an ANOVA table more like the type we’re familiar with we are going to use the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> package. This isn’t a package we yet have in our <code class="docutils literal notranslate"><span class="pre">data_science</span></code> environment so we need to install it using the Terminal shell.</p>
+<p>Go into your shell and activate the <code class="docutils literal notranslate"><span class="pre">data_science</span></code> environment using <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">data_science</span></code>. You then need to install the package using <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">statsmodels</span></code>. Once it is installed, go back to your Jupyter Notebook and you should be able to import <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> and the <code class="docutils literal notranslate"><span class="pre">ols</span></code> module (for ordinary least squares models) as follows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We define our model below using syntax not too disimilar from how we did the same in R. We are going to fit an OLS (Ordinary Least Squares) model to our data where our outcome variable <code class="docutils literal notranslate"><span class="pre">RT</span></code> is predicted by <code class="docutils literal notranslate"><span class="pre">Condition</span></code>. We then present the results in an ANOVA table using Type 3 Sums of Squares. This is much closer to the level of detail that we need.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s1">&#39;RT ~ Condition&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">anova_data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">anova_table</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova_lm</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">typ</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">anova_table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sum_sq</th>
+      <th>df</th>
+      <th>F</th>
+      <th>PR(&gt;F)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>8.971781e+06</td>
+      <td>1.0</td>
+      <td>1387.801825</td>
+      <td>2.263783e-21</td>
+    </tr>
+    <tr>
+      <th>Condition</th>
+      <td>5.896935e+05</td>
+      <td>1.0</td>
+      <td>91.216859</td>
+      <td>2.767399e-09</td>
+    </tr>
+    <tr>
+      <th>Residual</th>
+      <td>1.422243e+05</td>
+      <td>22.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The <em>F</em>-value is the mean square error of Condition divided by the mean square error of our Residuals.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">5.896935e+05</span> <span class="o">/</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.422243e+05</span> <span class="o">/</span> <span class="mi">22</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>91.21688065963411
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="factorial-anova">
+<h2>Factorial ANOVA<a class="headerlink" href="#factorial-anova" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%HTML</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;text-align: center&quot;</span><span class="p">&gt;</span> 
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;560&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;315&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://youtube.com/embed/ra0oNb8r8YU&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="text-align: center"> 
+<iframe width="560" height="315" src="https://youtube.com/embed/ra0oNb8r8YU" frameborder="0" allowfullscreen></iframe>
+
+</div>
+</div></div>
+</div>
+<p>In many types of experiments we are interested in how two (or more) experimental factors interact with each other. For example, in a typical priming paradigm experiment we might be interested in whether people’s response times to a positively or negatively valenced target stimulus are influenced by whether it was preceded by a positively or negatively valenced prime.</p>
+<p>The data in the file below are from a 2 x 2 repeated measures reaction time experiment. We were interested in how quickly participants could respond to Targets that were Positive vs. Negative when they followed Positive vs. Negative Primes. We expected that Positive Targets would be responded to more quickly after Positive vs. Negative Primes, and that Negative Targets would be responded to more quickly after Negative vs. Positive Primes. We measured the response times of 24 participants responding in each of these four conditions. We want to determine if there is a difference between our conditions (and if so, where that difference lies).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factorial_anova_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/ajstewartlang/02_intro_to_python_programming/main/data/ANOVA_data3.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factorial_anova_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Subject</th>
+      <th>Prime</th>
+      <th>Target</th>
+      <th>RT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Negative</td>
+      <td>Positive</td>
+      <td>1355</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Negative</td>
+      <td>Positive</td>
+      <td>1456</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Negative</td>
+      <td>Positive</td>
+      <td>1538</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Negative</td>
+      <td>Positive</td>
+      <td>1327</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Negative</td>
+      <td>Positive</td>
+      <td>1529</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>20</td>
+      <td>Negative</td>
+      <td>Negative</td>
+      <td>1271</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>21</td>
+      <td>Negative</td>
+      <td>Negative</td>
+      <td>1315</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>22</td>
+      <td>Negative</td>
+      <td>Negative</td>
+      <td>1537</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>23</td>
+      <td>Negative</td>
+      <td>Negative</td>
+      <td>1349</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>24</td>
+      <td>Negative</td>
+      <td>Negative</td>
+      <td>1390</td>
+    </tr>
+  </tbody>
+</table>
+<p>96 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped_data</span> <span class="o">=</span> <span class="n">factorial_anova_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Prime&#39;</span><span class="p">,</span> <span class="s1">&#39;Target&#39;</span><span class="p">])</span>
+<span class="n">group_means</span> <span class="o">=</span> <span class="n">grouped_data</span><span class="p">[</span><span class="s1">&#39;RT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">group_errors</span> <span class="o">=</span> <span class="n">grouped_data</span><span class="p">[</span><span class="s1">&#39;RT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">group_means</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prime     Target  
+Negative  Negative    1420.166667
+          Positive    1457.416667
+Positive  Negative    1428.041667
+          Positive     593.333333
+Name: RT, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_means</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">group_errors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Prime x Target&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Negative</span><span class="se">\n</span><span class="s1">Negative&#39;</span><span class="p">,</span> <span class="s1">&#39;Negative</span><span class="se">\n</span><span class="s1">Positive&#39;</span><span class="p">,</span> <span class="s1">&#39;Positive</span><span class="se">\n</span><span class="s1">Negative&#39;</span><span class="p">,</span> <span class="s1">&#39;Positive</span><span class="se">\n</span><span class="s1">Positive&#39;</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/pandas_68_0.png" src="_images/pandas_68_0.png" />
+</div>
+</div>
+<p>While the above plot looks <em>ok</em>, it’s a little tricky seeing the nature of the interaction. Luckily the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> library has a function called <code class="docutils literal notranslate"><span class="pre">interaction_plot</span></code> for plotting the kind of interaction we are interested in looking at.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.graphics.factorplots</span> <span class="kn">import</span> <span class="n">interaction_plot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We need to create a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> data frame that contains the means for each of our four conditions, and thus captures the 2 x 2 nature of our design. We can use <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> to turn our object of means by condition into a data frame that we can then use in our interaction plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_means</span> <span class="o">=</span> <span class="n">grouped_data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">group_means</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Subject</th>
+      <th>RT</th>
+    </tr>
+    <tr>
+      <th>Prime</th>
+      <th>Target</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Negative</th>
+      <th>Negative</th>
+      <td>12.5</td>
+      <td>1420.166667</td>
+    </tr>
+    <tr>
+      <th>Positive</th>
+      <td>12.5</td>
+      <td>1457.416667</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Positive</th>
+      <th>Negative</th>
+      <td>12.5</td>
+      <td>1428.041667</td>
+    </tr>
+    <tr>
+      <th>Positive</th>
+      <td>12.5</td>
+      <td>593.333333</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We need to reset the grouping in the data frame above so that we can use it in our plot. We do that using the <code class="docutils literal notranslate"><span class="pre">reset_index()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_to_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">group_means</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">data_to_plot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prime</th>
+      <th>Target</th>
+      <th>Subject</th>
+      <th>RT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Negative</td>
+      <td>Negative</td>
+      <td>12.5</td>
+      <td>1420.166667</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Negative</td>
+      <td>Positive</td>
+      <td>12.5</td>
+      <td>1457.416667</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Positive</td>
+      <td>Negative</td>
+      <td>12.5</td>
+      <td>1428.041667</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Positive</td>
+      <td>Positive</td>
+      <td>12.5</td>
+      <td>593.333333</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The above now looks much more like a standard data frame. Below we created an interaction plot using the <code class="docutils literal notranslate"><span class="pre">interaction_plot</span></code> function. We specify the various aesthetics of the plot, add labels, and then display the plot. If we wanted to save it we would use the <code class="docutils literal notranslate"><span class="pre">plt.savefig</span></code> function. This will save the plot using the file path we provide as an argument to the function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_interaction_plot</span> <span class="o">=</span> <span class="n">interaction_plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_to_plot</span><span class="p">[</span><span class="s1">&#39;Target&#39;</span><span class="p">],</span> <span class="n">trace</span><span class="o">=</span><span class="n">data_to_plot</span><span class="p">[</span><span class="s1">&#39;Prime&#39;</span><span class="p">],</span> 
+                                       <span class="n">response</span><span class="o">=</span><span class="n">data_to_plot</span><span class="p">[</span><span class="s1">&#39;RT&#39;</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">],</span> 
+                                       <span class="n">markers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;^&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Target&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;RT (ms.)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Reaction Times to Target Type as a Function of Prime Type&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/pandas_76_0.png" src="_images/pandas_76_0.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%HTML</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;text-align: center&quot;</span><span class="p">&gt;</span> 
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;560&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;315&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://youtube.com/embed/yruJCc794Zc&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="text-align: center"> 
+<iframe width="560" height="315" src="https://youtube.com/embed/yruJCc794Zc" frameborder="0" allowfullscreen></iframe>
+
+</div>
+</div></div>
+</div>
+<p>To build the factorial ANOVA model, we use the <code class="docutils literal notranslate"><span class="pre">AnovaRM</span></code> function from the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> library. We need to specify our outcome variable (<code class="docutils literal notranslate"><span class="pre">RT</span></code>), our grouping variable (this is our random effect) plus our within participant effects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.stats.anova</span> <span class="kn">import</span> <span class="n">AnovaRM</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factorial_model</span> <span class="o">=</span> <span class="n">AnovaRM</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">factorial_anova_data</span><span class="p">,</span> <span class="n">depvar</span><span class="o">=</span><span class="s1">&#39;RT&#39;</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Prime&#39;</span><span class="p">,</span> <span class="s1">&#39;Target&#39;</span><span class="p">],</span> <span class="n">subject</span><span class="o">=</span><span class="s1">&#39;Subject&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">factorial_model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   Anova
+===========================================
+             F Value  Num DF  Den DF Pr &gt; F
+-------------------------------------------
+Prime        471.4807 1.0000 23.0000 0.0000
+Target       276.8183 1.0000 23.0000 0.0000
+Prime:Target 284.8948 1.0000 23.0000 0.0000
+===========================================
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also use this function to build ANOVAs with between participant factors. We just need to specifiy those with the parameter <code class="docutils literal notranslate"><span class="pre">betweeen</span></code> much in the same way we have done above with <code class="docutils literal notranslate"><span class="pre">within</span></code>. We see from the above that both main effects, plus the interaction are significant at p &lt; .001. In order to interpret the interaction, we need to conduct pairwise comparisions. There are 2 key comparisons that will tell us where we have a priming effect. The first is comparining RTs to Positive Targets for Positive vs. Negative Primes, and the second is comparing RTs to Negative Targets following Positive vs. Negative Primes. We can effectively run these comparisons as <em>t</em>-tests and adopt a critical alpha level of .025 to control for the familywise error associated with running the two key tests.</p>
+<p>One way to run the <em>t</em>-tests is to filter our data frame and create new variables for each of the condition combinations we want to compare. In the code below, we create a boolean index (i.e., True and False values) corresponding to cases where the Prime AND the Target are both Positive. We then apply this logical index to the data frame and map the <code class="docutils literal notranslate"><span class="pre">RT</span></code> column of that filtered data frame onto a new variable called <code class="docutils literal notranslate"><span class="pre">PP</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">factorial_anova_data</span><span class="p">[</span><span class="s1">&#39;Prime&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Positive&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">factorial_anova_data</span><span class="p">[</span><span class="s1">&#39;Target&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Positive&#39;</span><span class="p">)</span>
+<span class="n">PP</span> <span class="o">=</span> <span class="n">factorial_anova_data</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;RT&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We then do the same for cases where the Prime is Negative and the Target is Positive.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">factorial_anova_data</span><span class="p">[</span><span class="s1">&#39;Prime&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Negative&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">factorial_anova_data</span><span class="p">[</span><span class="s1">&#39;Target&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Positive&#39;</span><span class="p">)</span>
+<span class="n">NP</span> <span class="o">=</span> <span class="n">factorial_anova_data</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;RT&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now run a <em>t</em>-test using the <code class="docutils literal notranslate"><span class="pre">stats.ttest_rel</span></code> function for paired samples <em>t</em>-tests.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_rel</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">NP</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ttest_relResult(statistic=-32.00158210315536, pvalue=1.41511213896552e-20)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that this comparison is significant. Your challenge now is to write the code for the other comparison - in other words, comparing RTs to Negative Targets following Positive vs. Negative Primes.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click the button to reveal answer</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>index = (factorial_anova_data[&#39;Prime&#39;]==&#39;Positive&#39;) &amp; (factorial_anova_data[&#39;Target&#39;]==&#39;Negative&#39;)
+PN = factorial_anova_data[index][&#39;RT&#39;] 
+
+index = (factorial_anova_data[&#39;Prime&#39;]==&#39;Negative&#39;) &amp; (factorial_anova_data[&#39;Target&#39;]==&#39;Negative&#39;)
+NN = factorial_anova_data[index][&#39;RT&#39;]
+
+stats.ttest_rel(PN, NN) 
+</pre></div>
+</div>
+</div>
+<p>The following will be a group-based activity which you will do in class.</p>
+<p>You need to build a new factorial ANOVA for the following experiment. The data in the file <a class="reference external" href="https://raw.githubusercontent.com/ajstewartlang/02_intro_to_python_programming/main/data/ANOVA_challenge.csv">https://raw.githubusercontent.com/ajstewartlang/02_intro_to_python_programming/main/data/ANOVA_challenge.csv</a> are from a 2 x 2 repeated measures design. 148 participants responded to a target image that was either positive or negative in valence. The target was preceded by a prime that was either also positive or negative in valence. We want to determine whether people responded faster to positive images following a positive prime (relative to following a negative prime),
+and faster to negative images following a negative prime (relative to following a positive prime). Visualise the data and report the key descriptives before then running the appropriate ANOVA.</p>
+</div>
+<div class="section" id="regression">
+<h2>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%HTML</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;text-align: center&quot;</span><span class="p">&gt;</span> 
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;560&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;315&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://youtube.com/embed/wcGvoojw6WI&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="text-align: center"> 
+<iframe width="560" height="315" src="https://youtube.com/embed/wcGvoojw6WI" frameborder="0" allowfullscreen></iframe>
+
+</div>
+</div></div>
+</div>
+<p>As you may recall, ANOVA and regression are both cases of the General Linear Model in action. Let’s turn now to regression. We’re going to start by using the dataset called <code class="docutils literal notranslate"><span class="pre">crime_dataset.csv</span></code> - this dataset contains population data, housing price index data and crime data for cities in the US.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crime_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/ajstewartlang/09_glm_regression_pt1/master/data/crime_dataset.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crime_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>index_nsa</th>
+      <th>City, State</th>
+      <th>Population</th>
+      <th>Violent Crimes</th>
+      <th>Homicides</th>
+      <th>Rapes</th>
+      <th>Assaults</th>
+      <th>Robberies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1975.0</td>
+      <td>41.080</td>
+      <td>Atlanta, GA</td>
+      <td>490584.0</td>
+      <td>8033.0</td>
+      <td>185.0</td>
+      <td>443.0</td>
+      <td>3518.0</td>
+      <td>3887.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1975.0</td>
+      <td>30.750</td>
+      <td>Chicago, IL</td>
+      <td>3150000.0</td>
+      <td>37160.0</td>
+      <td>818.0</td>
+      <td>1657.0</td>
+      <td>12514.0</td>
+      <td>22171.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1975.0</td>
+      <td>36.350</td>
+      <td>Cleveland, OH</td>
+      <td>659931.0</td>
+      <td>10403.0</td>
+      <td>288.0</td>
+      <td>491.0</td>
+      <td>2524.0</td>
+      <td>7100.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1975.0</td>
+      <td>20.910</td>
+      <td>Oakland, CA</td>
+      <td>337748.0</td>
+      <td>5900.0</td>
+      <td>111.0</td>
+      <td>316.0</td>
+      <td>2288.0</td>
+      <td>3185.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1975.0</td>
+      <td>20.385</td>
+      <td>Seattle, WA</td>
+      <td>503500.0</td>
+      <td>3971.0</td>
+      <td>52.0</td>
+      <td>324.0</td>
+      <td>1492.0</td>
+      <td>2103.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>First let’s do some wrangling. There is one column that combines both City and State information. Let’s separate that information out into two new columns called ‘City’ and ‘State’. We first need to rename the column <code class="docutils literal notranslate"><span class="pre">City,</span> <span class="pre">State</span></code> to <code class="docutils literal notranslate"><span class="pre">City_State</span></code> in order to get rid of the space.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crime_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;City, State&#39;</span><span class="p">:</span><span class="s1">&#39;City_State&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We then split the colunm <code class="docutils literal notranslate"><span class="pre">City_State</span></code> into two columns, the first called <code class="docutils literal notranslate"><span class="pre">City</span></code> and the second called <code class="docutils literal notranslate"><span class="pre">State</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crime_data</span><span class="p">[[</span><span class="s1">&#39;City&#39;</span><span class="p">,</span><span class="s1">&#39;State&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">crime_data</span><span class="o">.</span><span class="n">City_State</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then drop the original column <code class="docutils literal notranslate"><span class="pre">City_State</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crime_data</span> <span class="o">=</span> <span class="n">crime_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;City_State&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crime_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>index_nsa</th>
+      <th>Population</th>
+      <th>Violent Crimes</th>
+      <th>Homicides</th>
+      <th>Rapes</th>
+      <th>Assaults</th>
+      <th>Robberies</th>
+      <th>City</th>
+      <th>State</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1975.0</td>
+      <td>41.080</td>
+      <td>490584.0</td>
+      <td>8033.0</td>
+      <td>185.0</td>
+      <td>443.0</td>
+      <td>3518.0</td>
+      <td>3887.0</td>
+      <td>Atlanta,</td>
+      <td>GA</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1975.0</td>
+      <td>30.750</td>
+      <td>3150000.0</td>
+      <td>37160.0</td>
+      <td>818.0</td>
+      <td>1657.0</td>
+      <td>12514.0</td>
+      <td>22171.0</td>
+      <td>Chicago,</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1975.0</td>
+      <td>36.350</td>
+      <td>659931.0</td>
+      <td>10403.0</td>
+      <td>288.0</td>
+      <td>491.0</td>
+      <td>2524.0</td>
+      <td>7100.0</td>
+      <td>Cleveland,</td>
+      <td>OH</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1975.0</td>
+      <td>20.910</td>
+      <td>337748.0</td>
+      <td>5900.0</td>
+      <td>111.0</td>
+      <td>316.0</td>
+      <td>2288.0</td>
+      <td>3185.0</td>
+      <td>Oakland,</td>
+      <td>CA</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1975.0</td>
+      <td>20.385</td>
+      <td>503500.0</td>
+      <td>3971.0</td>
+      <td>52.0</td>
+      <td>324.0</td>
+      <td>1492.0</td>
+      <td>2103.0</td>
+      <td>Seattle,</td>
+      <td>WA</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We also need to get rid of the space in the <code class="docutils literal notranslate"><span class="pre">Violent</span> <span class="pre">Crimes</span></code> column and rename the column <code class="docutils literal notranslate"><span class="pre">index_nsa</span></code> as <code class="docutils literal notranslate"><span class="pre">house_prices</span></code>. We are first going to set a dictionary, called a <code class="docutils literal notranslate"><span class="pre">dict</span></code> which contains the old names and the new names of the columns that we want to rename.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Violent Crimes&#39;</span><span class="p">:</span><span class="s1">&#39;Violent_Crimes&#39;</span><span class="p">,</span> <span class="s1">&#39;index_nsa&#39;</span><span class="p">:</span><span class="s1">&#39;house_prices&#39;</span><span class="p">}</span>
+<span class="n">crime_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nb">dict</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crime_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>house_prices</th>
+      <th>Population</th>
+      <th>Violent_Crimes</th>
+      <th>Homicides</th>
+      <th>Rapes</th>
+      <th>Assaults</th>
+      <th>Robberies</th>
+      <th>City</th>
+      <th>State</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1975.0</td>
+      <td>41.080</td>
+      <td>490584.0</td>
+      <td>8033.0</td>
+      <td>185.0</td>
+      <td>443.0</td>
+      <td>3518.0</td>
+      <td>3887.0</td>
+      <td>Atlanta,</td>
+      <td>GA</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1975.0</td>
+      <td>30.750</td>
+      <td>3150000.0</td>
+      <td>37160.0</td>
+      <td>818.0</td>
+      <td>1657.0</td>
+      <td>12514.0</td>
+      <td>22171.0</td>
+      <td>Chicago,</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1975.0</td>
+      <td>36.350</td>
+      <td>659931.0</td>
+      <td>10403.0</td>
+      <td>288.0</td>
+      <td>491.0</td>
+      <td>2524.0</td>
+      <td>7100.0</td>
+      <td>Cleveland,</td>
+      <td>OH</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1975.0</td>
+      <td>20.910</td>
+      <td>337748.0</td>
+      <td>5900.0</td>
+      <td>111.0</td>
+      <td>316.0</td>
+      <td>2288.0</td>
+      <td>3185.0</td>
+      <td>Oakland,</td>
+      <td>CA</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1975.0</td>
+      <td>20.385</td>
+      <td>503500.0</td>
+      <td>3971.0</td>
+      <td>52.0</td>
+      <td>324.0</td>
+      <td>1492.0</td>
+      <td>2103.0</td>
+      <td>Seattle,</td>
+      <td>WA</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now let’s plot our data to see the relationship between Violent Crimes and the Population attributes in our dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crime_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Violent_Crimes&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/pandas_106_0.png" src="_images/pandas_106_0.png" />
+</div>
+</div>
+<p>So, it looks like there is a positive relationship between these two attributes. We can capture the strength of it by calculating Pearson’s r.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crime_data</span><span class="p">[{</span><span class="s1">&#39;Violent_Crimes&#39;</span><span class="p">,</span> <span class="s1">&#39;Population&#39;</span><span class="p">}]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Violent_Crimes</th>
+      <th>Population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Violent_Crimes</th>
+      <td>1.000000</td>
+      <td>0.808718</td>
+    </tr>
+    <tr>
+      <th>Population</th>
+      <td>0.808718</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We see from the above that there is a positive relationship (r=0.81)between population size and the rate of violent crime. From the plot, we might conclude that the relationship is being overly influenced by crime in a small number of very large cities (top right of the plot above). Let’s exclude cities with populations greater than 2,000,000</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crime_data_filtered</span> <span class="o">=</span> <span class="n">crime_data</span><span class="p">[</span><span class="n">crime_data</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2000000</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crime_data_filtered</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Violent_Crimes&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;For Cities with Populations &lt; 2,000,000&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/pandas_111_0.png" src="_images/pandas_111_0.png" />
+</div>
+</div>
+<p>Now let’s look at the correlation between Violent Crimes and Population size for cities with a population of less than 2,000,000.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crime_data_filtered</span><span class="p">[{</span><span class="s1">&#39;Violent_Crimes&#39;</span><span class="p">,</span> <span class="s1">&#39;Population&#39;</span><span class="p">}]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Violent_Crimes</th>
+      <th>Population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Violent_Crimes</th>
+      <td>1.00000</td>
+      <td>0.68638</td>
+    </tr>
+    <tr>
+      <th>Population</th>
+      <td>0.68638</td>
+      <td>1.00000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>It’s still clearly there but a little weaker than on the full dataset.</p>
+<p>Let’s focus just on the year 2015 and build a linear model to see how the number of violent crimes is prediction by the population size.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crime_data_2015</span> <span class="o">=</span> <span class="n">crime_data_filtered</span><span class="p">[</span><span class="n">crime_data_filtered</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2015</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crime_data_2015</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Violent_Crimes&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;For Cities with Populations &lt; 2,000,000 in 2015&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/pandas_117_0.png" src="_images/pandas_117_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crime_data_2015</span><span class="p">[{</span><span class="s1">&#39;Violent_Crimes&#39;</span><span class="p">,</span> <span class="s1">&#39;Population&#39;</span><span class="p">}]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Violent_Crimes</th>
+      <th>Population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Violent_Crimes</th>
+      <td>1.000000</td>
+      <td>0.649353</td>
+    </tr>
+    <tr>
+      <th>Population</th>
+      <td>0.649353</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We are going to build our model using <code class="docutils literal notranslate"><span class="pre">ols</span></code> from <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s1">&#39;Violent_Crimes ~ Population&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">crime_data_2015</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can print the parameters of our linear model using the <code class="docutils literal notranslate"><span class="pre">params</span></code> method on our model fit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept     944.333528
+Population      0.006963
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can check to see whether our predictor is significant by conducting a <em>t</em>-test on it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">t_test</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                             Test for Constraints                             
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+c0             0.0070      0.001      5.264      0.000       0.004       0.010
+==============================================================================
+</pre></div>
+</div>
+</div>
+</div>
+<p>Taking the above together, we see that population significantly predicts violent crimes. For every increase in population by 1, violent crimes increase by 0.006963. We can use this information to predict how many violent crimes might be expected if a city has a population of 1,000,000. For a city with a population of about a million, there will be about 7,907 Violent Crimes. We calculate this by multiplying the estimate of our predictor (0.006963) by 1,000,000 and then adding the intercept (944.3). This gives us 7907.3 violent crimes.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "data_science"
+        },
+        kernelOptions: {
+            kernelName: "data_science",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'data_science'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Python_programming.html" title="previous page">Introduction to Python</a>
+    <a class='right-next' id="next-link" href="boring.html" title="next page">Automate the Boring Stuff</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Andrew Stewart<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
