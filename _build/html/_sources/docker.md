@@ -41,7 +41,7 @@ Although slightly more computer science focused, the following two videos provid
 
 ## Docker on Windows
 
-In the video below I take you through Docker on Windows. Using the Powershell I cover running Docker containers, linking Docker containers with your local directories and files, and writing Dockerfiles to build new Docker images. 
+In the video below I take you through Docker on Windows. Using the Powershell I cover running Docker containers, linking Docker containers with your local directories and files, and writing Dockerfiles to build new Docker images. Note, you will need to enable Hyper-v and virtualisation in your BIOS if you encounter an error along the lines of "cannot enable hyper-v service" when you try to run Docker. 
 
 ### Part One
 

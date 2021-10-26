@@ -186,28 +186,3 @@ for line in tree(Path.home() / 'online_teaching/online_r_units/01_open_research_
         print(line)
 
 We see from the above that our directory contains the subdiretories `script`, `Dockerfile`, `images`, `.gitattributes`, `slides` etc. And that within the `images` subdirectory, we have 6 `.png` image files.
-
-***IGNORE BELOW***
-
-Path.home() / 'online_teaching/online_r_units/01_open_research_and_reproducibility'
-
-Path
-
-my_path = Path.home() / 'online_teaching/online_r_units/01_open_research_and_reproducibility'
-
-list(my_path.iterdir())
-
-import os
-
-def find_all(name, path):
-    result = []
-    for root, dirs, files in os.walk(path):
-        if name in files:
-            result.append(os.path.join(root, name))
-    return result
-
-my_path = input("Path to search: ")
-to_find = input("Name of file to find: ")
-
-print(find_all(to_find, my_path))
-
