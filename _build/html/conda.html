@@ -1,0 +1,478 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Installing Python with Conda &#8212; Andrew&#39;s BIOL63162 Workshops</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction to Python" href="Python_programming.html" />
+    <link rel="prev" title="Content" href="content.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/andrew.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Andrew's BIOL63162 Workshops</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="content.html">
+   Content
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Installing Python with Conda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_programming.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas.html">
+   Data Analysis in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="boring.html">
+   Automate the Boring Stuff
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docker.html">
+   Making your Analysis Reproducible
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/conda.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ajstewartlang/02_intro_to_python_programming"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ajstewartlang/02_intro_to_python_programming/issues/new?title=Issue%20on%20page%20%2Fconda.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#slides">
+   Slides
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-python">
+   Why Python?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conda-and-python">
+   Conda and Python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-on-windows-10">
+   Installing on Windows 10
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-on-macos">
+   Installing on MacOS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-new-conda-environment">
+   Creating a New Conda Environment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-new-python-shell-and-jupyter-kernel">
+   Creating a new Python Shell and Jupyter Kernel
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-a-python-script-from-the-command-line">
+   Running a Python Script from the Command Line
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="installing-python-with-conda">
+<h1>Installing Python with Conda<a class="headerlink" href="#installing-python-with-conda" title="Permalink to this headline">¶</a></h1>
+<p>In this first workshop we will cover how to install Python (plus Jupyter Notebooks) via the package manager Conda. Each of the videos in my workshops is best viewed in full screen mode. To go into full screen mode hover your cursor at the bottom right of the video window and click on the full screen icon, or press the “f” key.</p>
+<center>
+<iframe width="560" height="315" src="https://youtube.com/embed/A9RIYyw0FWc" frameborder="0" allowfullscreen></iframe>
+</center>
+<div class="section" id="slides">
+<h2>Slides<a class="headerlink" href="#slides" title="Permalink to this headline">¶</a></h2>
+<p>You can view and download the slides in a variety of formats by clicking on the image below.</p>
+<center>
+<p><a class="reference external" href="https://docs.google.com/presentation/d/18H_H-qQLbtFSF-jjUIQqHGEN7WxBpOuIfxcHF7f7cnA/edit?usp=sharing"><img alt="link_to_slides" src="_images/conda_slides.png" /></a></p>
+</center>
+</div>
+<div class="section" id="why-python">
+<h2>Why Python?<a class="headerlink" href="#why-python" title="Permalink to this headline">¶</a></h2>
+<p>The main goal of this session is to ensure you have a working Python installation using Conda that you can access via Jupyter Notebooks. Python is a general purpose programming language increasingly used for machine learning and scientific programming (as well as a bunch of other things such as the Instagram, Netflix, Spotify). Many data science/analysis roles require a mix of Python and R - it’s great if you know one of these languages, even better if you know both!</p>
+<p>Python and R are both interpreted languages - and code can be used together (you can run a Python script from within an R session, and vice versa). You may find some things are easier/quicker to code in one language, and others in the other. So why not use both?</p>
+</div>
+<div class="section" id="conda-and-python">
+<h2>Conda and Python<a class="headerlink" href="#conda-and-python" title="Permalink to this headline">¶</a></h2>
+<p>Conda is a package and environment management system. It is part of the Anaconda distribution that will allow us to install Python (as well as other data science tools), assorted libraries and importantly allow us to manage which versions of the software we’re using for different projects we might be working on. The managment of packages and environments is important and sometimes you’ll find that different projects you are involved with require <em>different</em> versions of Python and/or Python libraries. By creating separate environments (with particular configurations of software versions), your data science life will be so much easier.</p>
+<p>To install Conda (which comes with Python and common libraries), just follow the instructions here:</p>
+<p><a class="reference external" href="https://www.anaconda.com/products/individual">https://www.anaconda.com/products/individual</a></p>
+<p>Once it’s installed, check to make sure things are working ok by following the guide here:</p>
+<p><a class="reference external" href="https://docs.anaconda.com/anaconda/install/verify-install/">https://docs.anaconda.com/anaconda/install/verify-install/</a></p>
+<p>On Windows machines, you can access the command line interface (CLI) using the Anaconda Prompt in the Windows Start menu. On MacOS and Linux, access the CLI via the Terminal. The Terminal on a Mac can be found in the Utilities folder within your Applications folder. You might want to pin it to your Dock as you’ll be using it a lot in this course.</p>
+<p>Below are videos on how to install on both Windows 10 and MacOS.</p>
+<p>When installing, remember NOT to put a space in any directory name you create. It’s good practice in coding to NEVER use spaces in file names or directory names. Instead, use an underscore or a hyphen. It can be easy to do this by mistake because if you have your full name as your Windows or Mac user name, by default it will suggest installing it in that directory.</p>
+</div>
+<div class="section" id="installing-on-windows-10">
+<h2>Installing on Windows 10<a class="headerlink" href="#installing-on-windows-10" title="Permalink to this headline">¶</a></h2>
+<center>
+<iframe width="560" height="315" src="https://youtube.com/embed/IGKwvtYMPNk" frameborder="0" allowfullscreen></iframe>
+</center>
+</div>
+<div class="section" id="installing-on-macos">
+<h2>Installing on MacOS<a class="headerlink" href="#installing-on-macos" title="Permalink to this headline">¶</a></h2>
+<center>
+<iframe width="560" height="315" src="https://youtube.com/embed/BC0fxzvTJF0" frameborder="0" allowfullscreen></iframe>
+</center>
+<p>To check your Conda installation has worked, open a Terminal window if you are on Mac OS or Anaconda Prompt (Anaconda3) on Windows and once that has opened type:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda activate
+(base)$ python --version
+Python 3.8.8
+</pre></div>
+</div>
+<p>The first command activates the base (or default) Conda environment. The second command will print the version of Python you are running - which in my case is Python 3.8.8. You can start a Jupyter Notebook running in your base Conda environment by typing:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(base)$ jupyter notebook
+</pre></div>
+</div>
+<p>This should automatically open via your web browser. If it doesn’t open automatically, just copy and paste the link in the Terminal to your web browser manually. You may want to create a new folder called something like “jupyter_notebooks” to save your Jupyter Notebooks in. If you don’t, they’ll just be saved in whatever directory you were in when you typed <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code> at the prompt. Having a sensible folder structure to save your various notebooks and scripts to will make things much easier in the long run. Of course, we also just said that we may need to use different environments for different Python projects we are working on so now let’s look at how we create those.</p>
+</div>
+<div class="section" id="creating-a-new-conda-environment">
+<h2>Creating a New Conda Environment<a class="headerlink" href="#creating-a-new-conda-environment" title="Permalink to this headline">¶</a></h2>
+<center>
+<iframe width="560" height="315" src="https://youtube.com/embed/yhvAWu7Ete8" frameborder="0" allowfullscreen></iframe>
+</center>
+<p>Rather than just use the default base environment, it’s better practice from a reproducibility point of view to create a separate environment for each project you are working on. That way, you can have different packages - and different versions of each package (and even different versions of Python) - in different environments. Updating a package or the version of Python in one environment won’t affect the package in other environments - all this is managed via <code class="docutils literal notranslate"><span class="pre">conda</span></code>.</p>
+<p>Below I use the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span></code> command to create a new virtual environment that I’m calling <code class="docutils literal notranslate"><span class="pre">data_science</span></code>. If I want just a few specific packages, I’d add the package names after <code class="docutils literal notranslate"><span class="pre">data_science</span></code> (I can also add the package versions too here if I want, e.g., <code class="docutils literal notranslate"><span class="pre">numpy=1.19.2</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas=1.1.3</span></code>). I could even specify the version of Python I want my adding <code class="docutils literal notranslate"><span class="pre">Python=3.7.1</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(base)$ conda create --name data_science conda numpy pandas scipy matplotlib
+</pre></div>
+</div>
+<p>We can check what environments we now have on our machine by typing:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(base)$ conda info -e 
+
+# conda environments:
+#
+base                  *  /home/andrew/anaconda3
+data_science          /home/andrew/anaconda3/envs/data_science
+</pre></div>
+</div>
+<p>The * indicates which environment we are currently in. Note, if we wanted to, we can delete the <code class="docutils literal notranslate"><span class="pre">data_science</span></code> environment using the following. Note, we cannot delete an environment if we are in it. To exit an environment, type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(base)$ conda remove -n data_science --all
+</pre></div>
+</div>
+<p>Typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code> will list the packages and version numbers in the currently active environment. Note, here we’re now in the data_science environment.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(base)$ conda activate data_science
+(data_science)$ conda list
+# packages in environment at /home/andrew/anaconda3/envs/data_science:
+#
+# Name                    Version                   Build  Channel
+_libgcc_mutex             0.1                        main  
+alabaster                 0.7.12                     py_0  
+anaconda                  2020.11                  py38_0  
+anaconda-client           1.7.2                    py38_0  
+anaconda-project          0.8.4                      py_0  
+argh                      0.26.2                   py38_0  
+argon2-cffi               20.1.0           py38h7b6447c_1  
+asn1crypto                1.4.0                      py_0   
+...
+</pre></div>
+</div>
+<p>If we need to export all the information about our environment (perhaps to share with others or to build a Docker image), we can do that using the following to produce output in YAML format:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(data_science)$ conda env export
+name: data_science
+channels:
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1=main
+  - alabaster=0.7.12=py_0
+  - anaconda=2020.11=py38_0
+  - anaconda-client=1.7.2=py38_0
+  - anaconda-project=0.8.4=py_0
+  - argh=0.26.2=py38_0
+  - argon2-cffi=20.1.0=py38h7b6447c_1
+  - asn1crypto=1.4.0=py_0
+...
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-a-new-python-shell-and-jupyter-kernel">
+<h2>Creating a new Python Shell and Jupyter Kernel<a class="headerlink" href="#creating-a-new-python-shell-and-jupyter-kernel" title="Permalink to this headline">¶</a></h2>
+<p>In order to run a Jupyter Notebook in our new environment we need to connect them together. In the following, I activate my new environment which I’ve previously called <code class="docutils literal notranslate"><span class="pre">data_science</span></code>, install the <code class="docutils literal notranslate"><span class="pre">ipykernel</span></code> package (if it’s not already present) and create the kernel for use in Jupyter where it will appear with the name <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">(data_science)</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(base)$ conda activate data_science
+(data_science)$ conda install ipykernel
+(data_science)$ python -m ipykernel install --user --name data_science --display-name &quot;Python (data_science)&quot;
+</pre></div>
+</div>
+<p>The video below goes through the above and involves creating a new Conda environment via the Terminal.</p>
+<center>
+<iframe width="560" height="315" src="https://youtube.com/embed/rHM_bgs--Yw" frameborder="0" allowfullscreen></iframe>
+</center>
+<p>We’re now ready to fire up a Jupyter Notebook. To do that, type:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(data_science)$ jupyter notebook
+</pre></div>
+</div>
+<p>If you get an error with the above, type</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(data_science)$ conda deactivate
+</pre></div>
+</div>
+<p>and then:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(base)$ jupyter notebook
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-a-python-script-from-the-command-line">
+<h2>Running a Python Script from the Command Line<a class="headerlink" href="#running-a-python-script-from-the-command-line" title="Permalink to this headline">¶</a></h2>
+<center>
+<iframe width="560" height="315" src="https://youtube.com/embed/YtgCEKpanWI" frameborder="0" allowfullscreen></iframe>
+</center>
+<p>Follow the steps in the video and save your Python script as <code class="docutils literal notranslate"><span class="pre">hello_world.py</span></code>. The <code class="docutils literal notranslate"><span class="pre">.py</span></code> extension indicates that it is a Python script. Note, if you are on Windows you will need to use the command <code class="docutils literal notranslate"><span class="pre">dir</span></code> instead of <code class="docutils literal notranslate"><span class="pre">ls</span></code> to list the files in the current directory.</p>
+<p>We can run Python scripts from the command line (i.e., the Terminal if you are on MacOS or the Anaconda Prompt if you are on Windows) - just make sure you’re running it in the right Conda environment - we can tell that we’re in the <code class="docutils literal notranslate"><span class="pre">data_science</span></code> environment by the fact that <code class="docutils literal notranslate"><span class="pre">(data_science)</span></code> is presented at the start of the prompt. From the folder where you’ve saved the <code class="docutils literal notranslate"><span class="pre">hello_world.py</span></code> script, you can type <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">hello_world.py</span></code> at the prompt:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(data_science)$ python hello_world.py
+Hello world!
+</pre></div>
+</div>
+<p>Obviously this is a trivial example, but it’s useful to remember that you can run Python scripts like this rather than having to manually run things in Jupyter Notebooks or another interactive environment.</p>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Hopefully I’ve convinced you that Python is a language worth learning - it’s a general purpose programming language and is used widely in data science.</p>
+<p>You should understand why it’s important to ensure you write your Python scipts in Conda environments where Python library versions are managed. This will ensure that your Python scripts are reproducible.</p>
+<p>You should now have a working Python installation on a machine you can access and are ready to start writing some Python code in a Jupyter Notebook!</p>
+<center>
+<p><img alt="link_to_slides" src="_images/awesome.gif" /></p>
+</center>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="content.html" title="previous page">Content</a>
+    <a class='right-next' id="next-link" href="Python_programming.html" title="next page">Introduction to Python</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Andrew Stewart<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

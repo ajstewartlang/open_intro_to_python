@@ -1,0 +1,756 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Automate the Boring Stuff &#8212; Andrew&#39;s BIOL63162 Workshops</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Making your Analysis Reproducible" href="docker.html" />
+    <link rel="prev" title="Data Analysis in Python" href="pandas.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/andrew.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Andrew's BIOL63162 Workshops</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="content.html">
+   Content
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="conda.html">
+   Installing Python with Conda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_programming.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas.html">
+   Data Analysis in Python
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Automate the Boring Stuff
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docker.html">
+   Making your Analysis Reproducible
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/boring.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ajstewartlang/02_intro_to_python_programming"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ajstewartlang/02_intro_to_python_programming/issues/new?title=Issue%20on%20page%20%2Fboring.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ajstewartlang/02_intro_to_python_programming/gh-pages?urlpath=tree/boring.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-would-you-want-to-automate">
+   Why Would you Want to Automate?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-1">
+   Problem 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-2">
+   Problem 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-quick-tour-of-regular-expressions-regex">
+     A Quick Tour of Regular Expressions (regex)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-your-own-character-class">
+     Creating Your Own Character Class
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#returning-to-our-problem">
+     Returning to Our Problem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-our-regex">
+     Creating our regex
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#our-python-script-for-regex-searching">
+     Our Python Script for regex Searching
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-3">
+   Problem 3
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="automate-the-boring-stuff">
+<h1>Automate the Boring Stuff<a class="headerlink" href="#automate-the-boring-stuff" title="Permalink to this headline">¶</a></h1>
+<p>In this workshop, I’ll introduce you a few useful scripts motivated by the following book.</p>
+<center>
+<p><a class="reference external" href="https://automatetheboringstuff.com/"><img alt="book_cover" src="_images/boring.jpg" /></a></p>
+</center><div class="section" id="why-would-you-want-to-automate">
+<h2>Why Would you Want to Automate?<a class="headerlink" href="#why-would-you-want-to-automate" title="Permalink to this headline">¶</a></h2>
+<p>Many aspects of working with data, files etc. in involve the repetition of tasks and time consuming processes. Not only do many laborious tasks take time - but they can often be quite boring and hence prone to human error. Many common tasks can be automated via scripting in Python (and other languages) - that way, they can be repeated (so are reproducible) and unlikely to lead to the same errors that people can make (unless there’s a problem in the script!)</p>
+<p>This workshop contains examples of:</p>
+<ul class="simple">
+<li><p>Comparing two text files to see how they are different.</p></li>
+<li><p>Using regular expressions (regex) to extract email addresses for schools in two regions of London from a spreadsheet.</p></li>
+<li><p>Printing out the structure and contents of a directory.</p></li>
+</ul>
+</div>
+<div class="section" id="problem-1">
+<h2>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this headline">¶</a></h2>
+<p>Imagine you and a colleague are writing a document collaboratively. You’ve both taken an almost-final version of the document, and then each of you has made your own edits. You now have two versions of the ‘final’ document - with only very minor changes between them. How do you compare the two versions to figure out what differences there are between them?</p>
+<p>You <em>could</em> do this manually. But how quick and accurate would you be?</p>
+<p>Can you spot the changes between the two almost identical text files below? There are three differences between the files - one addition, one deletion, and one change. Can you spot them?</p>
+<center>
+<p><img alt="" src="_images/diffs.png" /></p>
+</center><p>It’s tricky to do this manually, so let’s look at a short Python script to automate this. The script is based on the <code class="docutils literal notranslate"><span class="pre">view.py</span></code> script from <a class="reference external" href="https://www.programcreek.com/python/?project_name=osssanitizer%2Fosspolice">here</a>.</p>
+<p>It compares two files - file1 and file2. The files need to be text files (so you may need to re-save the files as .txt files if you’re running this on your own documents), and as it’s written they need to be in a folder called <code class="docutils literal notranslate"><span class="pre">data</span></code> within the folder where the Python script itself sits.</p>
+<p>The two files are compared using the Python <code class="docutils literal notranslate"><span class="pre">difflib</span></code> module. An <code class="docutils literal notranslate"><span class="pre">HTML</span></code> table is produced which highlights the differences between the two files - the path to the table is outputted by the script. We are using the <code class="docutils literal notranslate"><span class="pre">os</span></code> module so we can write the output using the appropriate file path.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># adapted from view.py at </span>
+<span class="c1"># https://www.programcreek.com/python/?project_name=osssanitizer%2Fosspolice</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">difflib</span>
+
+<span class="n">file1</span> <span class="o">=</span> <span class="s2">&quot;data/file1&quot;</span>
+<span class="n">file2</span> <span class="o">=</span> <span class="s2">&quot;data/file2&quot;</span>
+
+<span class="n">fromlines</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file1</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="n">tolines</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file2</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">difflib</span><span class="o">.</span><span class="n">HtmlDiff</span><span class="p">()</span><span class="o">.</span><span class="n">make_file</span><span class="p">(</span><span class="n">fromlines</span><span class="p">,</span><span class="n">tolines</span><span class="p">,</span><span class="n">file1</span><span class="p">,</span><span class="n">file2</span><span class="p">)</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file2</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_diff.html&quot;</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The table of differences can be found here:&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The table of differences can be found here: data/file1_file2_diff.html
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="_images/html_table.png" /></p>
+</div>
+<div class="section" id="problem-2">
+<h2>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this headline">¶</a></h2>
+<p>Imagine we have a very large (~7 MB) <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file which contains a bunch of email address for all schools in the UK. We want to extract all the email address for schools in Hackney and Camden. They follow the format:</p>
+<p><a class="reference external" href="mailto:name&#37;&#52;&#48;schoolname&#46;hackney&#46;sch&#46;uk">name<span>&#64;</span>schoolname<span>&#46;</span>hackney<span>&#46;</span>sch<span>&#46;</span>uk</a></p>
+<p><a class="reference external" href="mailto:name&#37;&#52;&#48;schoolname&#46;camden&#46;sch&#46;uk">name<span>&#64;</span>schoolname<span>&#46;</span>camden<span>&#46;</span>sch<span>&#46;</span>uk</a></p>
+<p>We could manually search through the spreadsheet using <code class="docutils literal notranslate"><span class="pre">CTRL-F</span></code> or suchlike to find these - or we could automate the task…</p>
+<div class="section" id="a-quick-tour-of-regular-expressions-regex">
+<h3>A Quick Tour of Regular Expressions (regex)<a class="headerlink" href="#a-quick-tour-of-regular-expressions-regex" title="Permalink to this headline">¶</a></h3>
+<p>Regular expressions allow us to search for a pattern of text. Common patterns include email address (text with the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> symbol in the middle), web addresses that often have full stops and forward slashes, social media hashtags that begin with the <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol etc.</p>
+<blockquote>
+<div><p>If you had a list of names and you wanted to find all the michaels, Michaels, Mikes and mikes, you could use a simple regular expression inside of a search-box to locate all of them at once. You can use regular expressions to find all the files in a directory that end with jpg (or jpeg, or JPG or JPEG). You can use them to find all the street addresses (every string beginning with a number, followed by a space, followed by one or more words, followed by Street, or St, or Road or Rd, etc).</p>
+</div></blockquote>
+<blockquote>
+<div><p>Knowing (regular expressions) can mean the difference between solving a problem in three steps and solving it in 3,000 steps. When you’re a nerd, you forget that the problems you solve with a couple keystrokes can take other people days of tedious, error-prone work to slog through.</p>
+</div></blockquote>
+<blockquote>
+<div><p><a class="reference external" href="https://www.theguardian.com/technology/2012/dec/04/ict-teach-kids-regular-expressions">https://www.theguardian.com/technology/2012/dec/04/ict-teach-kids-regular-expressions</a></p>
+</div></blockquote>
+<p>In the US, phone numbers take the form of three digits followed by a dash, followed by three more digits followed by another dash, and then finally four digits. We can capture this pattern using the following regex:</p>
+<p><code class="docutils literal notranslate"><span class="pre">\d\d\d-\d\d\d-\d\d\d\d</span></code></p>
+<p>Where each <code class="docutils literal notranslate"><span class="pre">\d</span></code> in the regex stands for any digit character. We can combine these kind of ‘character class’ shorthand codes with literals. For example the regex <code class="docutils literal notranslate"><span class="pre">andrew\d\d</span></code> will match all occurrences of my name andrew which is followed by two digits (e.g., <code class="docutils literal notranslate"><span class="pre">andrew23</span></code>, <code class="docutils literal notranslate"><span class="pre">andrew09</span></code>, <code class="docutils literal notranslate"><span class="pre">andrew65</span></code> will all match, but <code class="docutils literal notranslate"><span class="pre">andrew3</span></code> will not).</p>
+<p>Other common character class shorthand codes include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\D</span></code>     Any character that is not a digit from 0 to 9</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\w</span></code>     Any letter, digit, or the underscore character</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\W</span></code>    Any character that is not a letter, digit, or the underscore character</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\s</span></code>    Any space, tab, or newline character</p></li>
+</ul>
+<p>In addition to the shorthand codes, regular expressions can include operators - some common ones are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.</span></code>        Matches any single character.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code>        The preceding item is optional and will be matched, at most, once.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>        The preceding item will be matched zero or more times.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code>        The preceding item will be matched one or more times.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{N}</span></code>      The preceding item is matched exactly N times.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{N,}</span></code>     The preceding item is matched N or more times.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{N,M}</span></code>    The preceding item is matched at least N times, but not more than M times.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code>        Represents the range if it’s not first or last in a list or the ending point of a range in a list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[]</span></code>        Lists, also called bracket expressions, are a set of one or more items.</p></li>
+</ul>
+</div>
+<div class="section" id="creating-your-own-character-class">
+<h3>Creating Your Own Character Class<a class="headerlink" href="#creating-your-own-character-class" title="Permalink to this headline">¶</a></h3>
+<p>Oftentimes the shorthand character classes are too broad for the kinds of matches we want. In such cases, we can create our own character class using square brackets - and can combine them with the operators on the previous slide.</p>
+<p>For example, this regex <code class="docutils literal notranslate"><span class="pre">[aeiou]</span></code> will match any occurrences of a vowel in a string.</p>
+<p>The regex <code class="docutils literal notranslate"><span class="pre">[A-Za-z]+5</span></code> will match any number of characters from A-Z or a-z followed by the number 5. While the expression <code class="docutils literal notranslate"><span class="pre">[A-Za-z]{4}\d</span></code> will match 4 characters from A-Z or a-z followed by any digit.</p>
+<p>You can play around with (and test) regular expressions here: <a class="reference external" href="https://regexr.com/">https://regexr.com/</a></p>
+</div>
+<div class="section" id="returning-to-our-problem">
+<h3>Returning to Our Problem<a class="headerlink" href="#returning-to-our-problem" title="Permalink to this headline">¶</a></h3>
+<p>We want to extract all the email address for schools in Hackney and Camden. They follow the format:</p>
+<p><code class="docutils literal notranslate"><span class="pre">name&#64;schoolname.hackney.sch.uk</span></code>
+<code class="docutils literal notranslate"><span class="pre">name&#64;schoolname.camden.sch.uk</span></code></p>
+<p>Both name and schoolname could contain any number of upper and lower case characters or digits but also symbols such as . or - used to separate first names from surnames (e.g., <code class="docutils literal notranslate"><span class="pre">mike.dixon</span></code> or <code class="docutils literal notranslate"><span class="pre">mike-dixon</span></code>). The same might hold for the schoolname. After <code class="docutils literal notranslate"><span class="pre">name</span></code> there will be an <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> symbol followed by <code class="docutils literal notranslate"><span class="pre">schoolname</span></code> and either the string <code class="docutils literal notranslate"><span class="pre">.hackney.sch.uk</span></code> OR <code class="docutils literal notranslate"><span class="pre">.camden.sch.uk</span></code>.</p>
+<p>So we want to create a regex that allows for these kinds of possible patterns.</p>
+</div>
+<div class="section" id="creating-our-regex">
+<h3>Creating our regex<a class="headerlink" href="#creating-our-regex" title="Permalink to this headline">¶</a></h3>
+<p>On the basis of what we’ve just discussed, the following regex should capture what we need:</p>
+<p><code class="docutils literal notranslate"><span class="pre">[A-Za-z0-9.-]+&#64;[A-Za-z0-9.-]+.(hackney|camden).sch.uk</span></code></p>
+<p>This will match patterns made up of any number of upper and lower case characters, digits, and the symbols <code class="docutils literal notranslate"><span class="pre">.</span></code> and <code class="docutils literal notranslate"><span class="pre">-</span></code>, followed by the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> symbol, followed by any number of upper and lower case characters, digits, and the symbols <code class="docutils literal notranslate"><span class="pre">.</span></code> and <code class="docutils literal notranslate"><span class="pre">-</span></code>, followed by a <code class="docutils literal notranslate"><span class="pre">.</span></code> followed by either <code class="docutils literal notranslate"><span class="pre">hackney</span></code> OR <code class="docutils literal notranslate"><span class="pre">camden</span></code> followed by <code class="docutils literal notranslate"><span class="pre">.sch.uk</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">|</span></code> operator can be read as boolean OR so in the above regex we match for either hackney OR camden in the email address.</p>
+</div>
+<div class="section" id="our-python-script-for-regex-searching">
+<h3>Our Python Script for regex Searching<a class="headerlink" href="#our-python-script-for-regex-searching" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./data/school_data.csv&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csv_file</span><span class="p">:</span>
+    <span class="n">csv_reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csv_reader</span><span class="p">:</span>
+
+        <span class="n">to_search</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+        <span class="n">patterns</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;([A-Za-z0-9.-]+@[A-Za-z0-9.-]+.(hackney|camden).sch.uk)&#39;</span><span class="p">,</span> <span class="n">to_search</span><span class="p">)</span>    
+
+        <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">patterns</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">pattern</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>admin@thomascoram.camden.sch.uk
+ehead@netley.camden.sch.uk
+admin@argyle.camden.sch.uk
+admin@beckford.camden.sch.uk
+head@brecknock.camden.sch.uk
+admin@brookfield.camden.sch.uk
+admin@carlton.camden.sch.uk
+admin@edithneville.camden.sch.uk
+admin@fleet.camden.sch.uk
+admin@hawley.camden.sch.uk
+ehead@netley.camden.sch.uk
+admin@newend.camden.sch.uk
+head@primrosehill.camden.sch.uk
+admin@rhylprim.camden.sch.uk
+admin@rcobden.camden.sch.uk
+headofschool@torriano.camden.sch.uk
+admin@fitzjohns.camden.sch.uk
+admin@eleanorpalmer.camden.sch.uk
+admin@cchurchnw3.camden.sch.uk
+admin@cchurchnw1.camden.sch.uk
+admin@emmanuel.camden.sch.uk
+head@hampsteadprim.camden.sch.uk
+admin@holytrinitynw3.camden.sch.uk
+admin@holytrinitynw1.camden.sch.uk
+head@kentishtown.camden.sch.uk
+head@rosary.camden.sch.uk
+admin@stalbans.camden.sch.uk
+admin@stdominics.camden.sch.uk
+admin@stgeorge.camden.sch.uk
+head@stjosephs.camden.sch.uk
+admin@stmarykilburn.camden.sch.uk
+admin@stmp.camden.sch.uk
+admin@stmichaels.camden.sch.uk
+head@stpatricks.camden.sch.uk
+head@stpauls.camden.sch.uk
+admin@steugene.camden.sch.uk
+deputy@ourladys.camden.sch.uk
+office@haverstock.camden.sch.uk
+enquiries@parliamenthill.camden.sch.uk
+info@aclandburghley.camden.sch.uk
+info@williamellis.camden.sch.uk
+general@lsu.camden.sch.uk
+admin@gosh.camden.sch.uk
+admin@fbarnes.camden.sch.uk
+head@royalfree.camden.sch.uk
+admin@swisscottage.camden.sch.uk
+admin@wentworth.hackney.sch.uk
+admin@comet.hackney.sch.uk
+admin@berger.hackney.sch.uk
+office@colvestone.hackney.sch.uk
+admin@daubeney.hackney.sch.uk
+admin@debeauvoir.hackney.sch.uk
+admin@gainsborough.hackney.sch.uk
+admin@lauriston.hackney.sch.uk
+ctyson@londonfields.hackney.sch.uk
+jbetsworth@millfields.hackney.sch.uk
+jtaylor@morningside.hackney.sch.uk
+admin@orchard.hackney.sch.uk
+admin@queensbridge.hackney.sch.uk
+admin@randalcremer.hackney.sch.uk
+admin@princessmay.hackney.sch.uk
+admin@sebright.hackney.sch.uk
+admin@shacklewell.hackney.sch.uk
+adminsouthwold@vs.hackney.sch.uk
+cking@colvestone.hackney.sch.uk
+admin@tyssen.hackney.sch.uk
+admin@shoreditchpark.hackney.sch.uk
+admin@kingsmead.hackney.sch.uk
+admin@sirthomasabney.hackney.sch.uk
+info@grasmere.hackney.sch.uk
+nhewins@jubilee.hackney.sch.uk
+csashidharan@nightingale.hackney.sch.uk
+admin@baden-powell.hackney.sch.uk
+admin@harringtonhill.hackney.sch.uk
+kward@holmleigh.hackney.sch.uk
+admin@parkwood.hackney.sch.uk
+pa@benthal.hackney.sch.uk
+mdvoffice@mandeville.hackney.sch.uk
+ybarnett@holytrinity.hackney.sch.uk
+sflood@olsj.hackney.sch.uk
+office@st-john.hackney.sch.uk
+admin@st-matthias.hackney.sch.uk
+office@st-monicas.hackney.sch.uk
+klot@spsm.hackney.sch.uk
+admin@st-johnjerusalem.hackney.sch.uk
+admin-office@st-marys.hackney.sch.uk
+officeadmin@st-scholasticas.hackney.sch.uk
+info@simonmarks.hackney.sch.uk
+haggerstonschool@haggerston.hackney.sch.uk
+admin@sns.hackney.sch.uk
+officeadmin@ourladys.hackney.sch.uk
+info@stormonthouse.hackney.sch.uk
+admin@ickburgh.hackney.sch.uk
+admin@springfield.hackney.sch.uk
+info@rushmore.hackney.sch.uk
+lnichols@gayhurst.hackney.sch.uk
+admin@chrishatton.camden.sch.uk
+admin@williampatten.hackney.sch.uk
+adminHG@vs.hackney.sch.uk
+Chris.Brown@bridgeacademy.hackney.sch.uk
+admin@bettylayward.hackney.sch.uk
+office@johnjames.hackney.sch.uk
+admin@kingsgate-pri.camden.sch.uk
+laswap@williamellis.camden.sch.uk
+dfinan@stdominics.hackney.sch.uk
+Admin-regents@newregents.hackney.sch.uk
+afeltham@clapton.hackney.sch.uk
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-3">
+<h2>Problem 3<a class="headerlink" href="#problem-3" title="Permalink to this headline">¶</a></h2>
+<p>Imaagine we have a large project directory on our computer and we want to be able to easily see what files and directories it contains, and what files and directories are contained within those directories etc.</p>
+<p>The script below traverses the contents using the path name on my computer <code class="docutils literal notranslate"><span class="pre">online_teaching/online_r_units/01_open_research_and_reproducibility</span></code>. This will print out everything in the directory <code class="docutils literal notranslate"><span class="pre">01_open_research_and_reproducibility</span></code> apart from the files within the hidden directories <code class="docutils literal notranslate"><span class="pre">.git</span></code> and <code class="docutils literal notranslate"><span class="pre">.Rproj.user</span></code> - which we define in our variable <code class="docutils literal notranslate"><span class="pre">directories_to_ignore</span></code>. This can be a useful way to visualise how you’ve organised the contents on your computer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># adapted from Aaron Hall on https://stackoverflow.com/questions/9727673/list-directory-tree-structure-in-python</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">space</span> <span class="o">=</span>  <span class="s1">&#39;    &#39;</span>
+<span class="n">branch</span> <span class="o">=</span> <span class="s1">&#39;│   &#39;</span>
+<span class="n">tee</span> <span class="o">=</span>    <span class="s1">&#39;├── &#39;</span>
+<span class="n">last</span> <span class="o">=</span>   <span class="s1">&#39;└── &#39;</span>
+<span class="n">directories_to_ignore</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.git&#39;</span><span class="p">,</span> <span class="s1">&#39;.Rproj.user&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">tree</span><span class="p">(</span><span class="n">dir_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>  
+    <span class="n">contents</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dir_path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">())</span>
+    <span class="n">pointers</span> <span class="o">=</span> <span class="p">[</span><span class="n">tee</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">last</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">pointer</span><span class="p">,</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pointers</span><span class="p">,</span> <span class="n">contents</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">prefix</span> <span class="o">+</span> <span class="n">pointer</span> <span class="o">+</span> <span class="n">path</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()</span> <span class="ow">and</span> <span class="n">path</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">directories_to_ignore</span><span class="p">:</span> 
+            <span class="n">extension</span> <span class="o">=</span> <span class="n">branch</span> <span class="k">if</span> <span class="n">pointer</span> <span class="o">==</span> <span class="n">tee</span> <span class="k">else</span> <span class="n">space</span> 
+            <span class="k">yield from</span> <span class="n">tree</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="o">+</span><span class="n">extension</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The above script is written as a function called <code class="docutils literal notranslate"><span class="pre">tree</span></code>. To call it we use the code below - note, the function needs an argument corresponding to the path at which it is to start traversing the file structure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">tree</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;online_teaching/online_r_units/01_open_research_and_reproducibility&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>├── .gitignore
+├── LICENSE
+├── .gitattributes
+├── 01_open_research_and_reproducibility.Rproj
+├── slides
+│   ├── introduction_to_open_research.odp
+│   ├── introduction_to_open_research.pdf
+│   ├── adopting_open_practices.pdf
+│   └── adopting_open_practices.odp
+├── .git
+├── images
+│   ├── ionnidis.png
+│   ├── how_to_do.png
+│   ├── power.png
+│   ├── cw20.png
+│   ├── 7_steps.png
+│   └── bishop.png
+├── README.md
+├── .Rhistory
+├── Dockerfile
+├── script
+│   └── 01_open_research_and_reproducibility.Rmd
+├── knitted_workshop
+│   └── 01_open_research_and_reproducibility.html
+└── .Rproj.user
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see from the above that our directory contains the subdiretories <code class="docutils literal notranslate"><span class="pre">script</span></code>, <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>, <code class="docutils literal notranslate"><span class="pre">images</span></code>, <code class="docutils literal notranslate"><span class="pre">.gitattributes</span></code>, <code class="docutils literal notranslate"><span class="pre">slides</span></code> etc. And that within the <code class="docutils literal notranslate"><span class="pre">images</span></code> subdirectory, we have 6 <code class="docutils literal notranslate"><span class="pre">.png</span></code> image files.</p>
+<p><em><strong>IGNORE BELOW</strong></em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;online_teaching/online_r_units/01_open_research_and_reproducibility&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PosixPath(&#39;/home/andrew/online_teaching/online_r_units/01_open_research_and_reproducibility&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Path</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pathlib.Path
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;online_teaching/online_r_units/01_open_research_and_reproducibility&#39;</span>
+
+<span class="nb">list</span><span class="p">(</span><span class="n">my_path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[PosixPath(&#39;/home/andrew/online_teaching/online_r_units/01_open_research_and_reproducibility/.gitignore&#39;),
+ PosixPath(&#39;/home/andrew/online_teaching/online_r_units/01_open_research_and_reproducibility/LICENSE&#39;),
+ PosixPath(&#39;/home/andrew/online_teaching/online_r_units/01_open_research_and_reproducibility/.gitattributes&#39;),
+ PosixPath(&#39;/home/andrew/online_teaching/online_r_units/01_open_research_and_reproducibility/01_open_research_and_reproducibility.Rproj&#39;),
+ PosixPath(&#39;/home/andrew/online_teaching/online_r_units/01_open_research_and_reproducibility/slides&#39;),
+ PosixPath(&#39;/home/andrew/online_teaching/online_r_units/01_open_research_and_reproducibility/.git&#39;),
+ PosixPath(&#39;/home/andrew/online_teaching/online_r_units/01_open_research_and_reproducibility/images&#39;),
+ PosixPath(&#39;/home/andrew/online_teaching/online_r_units/01_open_research_and_reproducibility/README.md&#39;),
+ PosixPath(&#39;/home/andrew/online_teaching/online_r_units/01_open_research_and_reproducibility/.Rhistory&#39;),
+ PosixPath(&#39;/home/andrew/online_teaching/online_r_units/01_open_research_and_reproducibility/Dockerfile&#39;),
+ PosixPath(&#39;/home/andrew/online_teaching/online_r_units/01_open_research_and_reproducibility/script&#39;),
+ PosixPath(&#39;/home/andrew/online_teaching/online_r_units/01_open_research_and_reproducibility/knitted_workshop&#39;),
+ PosixPath(&#39;/home/andrew/online_teaching/online_r_units/01_open_research_and_reproducibility/.Rproj.user&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">find_all</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_path</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Path to search: &quot;</span><span class="p">)</span>
+<span class="n">to_find</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Name of file to find: &quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">find_all</span><span class="p">(</span><span class="n">to_find</span><span class="p">,</span> <span class="n">my_path</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="mi">9</span><span class="n">c86906a22c9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">my_path</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Path to search: &quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">to_find</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Name of file to find: &quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">find_all</span><span class="p">(</span><span class="n">to_find</span><span class="p">,</span> <span class="n">my_path</span><span class="p">))</span>
+
+<span class="nn">~/anaconda3/envs/data_science/lib/python3.9/site-packages/ipykernel/kernelbase.py</span> in <span class="ni">raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">855</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">856</span><span class="s2">         if not self._allow_stdin:</span>
+<span class="ne">--&gt; </span><span class="mi">857</span><span class="s2">             raise StdinNotImplementedError(</span>
+<span class="g g-Whitespace">    </span><span class="mi">858</span><span class="s2">                 &quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">859</span><span class="s2">             )</span>
+
+<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "data_science"
+        },
+        kernelOptions: {
+            kernelName: "data_science",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'data_science'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="pandas.html" title="previous page">Data Analysis in Python</a>
+    <a class='right-next' id="next-link" href="docker.html" title="next page">Making your Analysis Reproducible</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Andrew Stewart<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
