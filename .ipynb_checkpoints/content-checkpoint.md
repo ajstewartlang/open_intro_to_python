@@ -5,4 +5,5 @@ This set of workshops is intended as an introduction to the Python programming l
 
 If you spot any errors with any of the content (e.g., typos) please raise an issue by clicking on the icon in the top right ![](images/github.png) where you can also view the source this book. You can download the content of each of the workshops in either .md or .pdf format by clicking on the download icon ![](images/download.png) in the top right.  
 
+You can view the license for how to (re)use this material click [here](https://github.com/ajstewartlang/open_intro_to_python/blob/main/LICENSE).
 

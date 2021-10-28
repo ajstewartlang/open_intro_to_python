@@ -168,7 +168,7 @@ and then:
 
 </center>
 
-Follow the steps in the video and save your Python script as `hello_world.py`. The `.py` extension indicates that it is a Python script. Note, if you are on Windows you will need to use the command `dir` instead of `ls` to list the files in the current directory.
+Follow the steps in the video and save your Python script as `hello_world.py`. The `.py` extension indicates that it is a Python script. Note, if you are on Windows you will need to use the command `dir` instead of `ls` to list the files in the current directory if you are in Anaconda Prompt. If you are in Anaconda Powershell Prompt, `ls` will do the job.
 
 We can run Python scripts from the command line (i.e., the Terminal if you are on MacOS or the Anaconda Prompt if you are on Windows) - just make sure you’re running it in the right Conda environment - we can tell that we’re in the `data_science` environment by the fact that `(data_science)` is presented at the start of the prompt. From the folder where you’ve saved the `hello_world.py` script, you can type `python hello_world.py` at the prompt:
 
