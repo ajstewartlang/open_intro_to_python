@@ -148,11 +148,7 @@ The video below goes through the above and involves creating a new Conda environ
 
 </center>
 
-We’re now ready to fire up a Jupyter Notebook. To do that, type: 
-
-    (data_science)$ jupyter notebook
-
-If you get an error with the above, type 
+We’re now ready to fire up a Jupyter Notebook. To do that, type the following to get us back onto the base conda environment:
 
     (data_science)$ conda deactivate
 
