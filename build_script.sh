@@ -6,7 +6,8 @@
 jb build ./
 
 # push to github pages
-ghp-import -n -p -f ./_build/html
+#ghp-import -n -p -f ./_build/html
+ghp-import ./_build/html
 
 # add all, commit, and push to github main branch
 git add --all
