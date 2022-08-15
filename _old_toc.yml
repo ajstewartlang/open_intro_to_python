@@ -1,0 +1,8 @@
+format: jb-article
+root: content
+sections:
+- file: conda
+- file: Python_programming
+- file: pandas
+- file: boring
+- file: docker
